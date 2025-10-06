@@ -1,0 +1,84 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+package "Model" {
+    abstract class Product {
+        - int articleNumber
+        - String title
+        - double price
+        - String description
+        - ProductCategory productCategory;
+        {abstract} category() : String
+        ' + getters/setters for all attributes
+    class ProductDao {
+        - List<Product> products
+        + getAllProducts() : List<Product>
+        + addProduct(product : Product) : void
+        + findProductByArticleNumber(articleNumber : String) : Product
+        + saveToFile() : void
+        + loadFromFile() : void
+    }
+    class PetFood extends Product {
+        - String animal
+        - String age ' puppy-kitty/adult/senior
+        + getAnimal() String
+        + getAge() String
+    }
+
+' I will add subclasses to PetFood such as DogFood and CatFood if needed
+
+    class PetToy extends Product {
+        - String animal
+        + getName() String
+        + getAnimal() String
+    }
+    class PetAccessory extends Product{
+        - String animal
+        + getName() String
+        + getAnimal() String
+    }
+    enum ProductCategory {
+        PET_FOOD
+        PET_TOY
+        PET_ACCESSORY
+    }
+    enum AgeCategory {
+        PUPPY
+        KITTY
+        ADULT
+        SENIOR
+    }
+}
+
+package "UI" {
+    interface UI {
+    + prompt(message : String) : String
+    + info(message : String) : void
+    + menu() : String
+    }
+    class ScannerUI implements UI
+    class JOptionPaneUI implements UI
+
+}
+
+package "Controller" {
+    class Application {
+        + runApplication()
+    }
+}
+
+' Relations
+ProductDao --> Product
+' PetFood --|> Product
+' PetToy --|> Product
+' PetAccessory --|> Product
+ProductCategory --> PetFood
+ProductCategory --> PetToy
+ProductCategory --> PetAccessory
+AgeCategory --> PetFood
+
+Application --> UI
+Application --> ProductDao
+Application --> Product
+
+@enduml
