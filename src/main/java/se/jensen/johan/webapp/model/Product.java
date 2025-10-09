@@ -1,15 +1,14 @@
 package se.jensen.johan.webapp.model;
 
-abstract class Product {
+public abstract class Product {
     private int articleNumber;
     private String title;
     private double price;
     private String description;
-    private ProductCategory productCategory;
+    private ProductCategory productCategory; // Not needed for this project to have this and enum but I want to try and "prepare" for later
 
 
-
-    abstract String category();
+    public abstract String category();
 
     public int getArticleNumber() {
         return articleNumber;
@@ -49,5 +48,14 @@ abstract class Product {
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "Title:" + title
+                + "\n Article number: " + articleNumber
+                + "\n Price: " + price
+                + "\n Description: " + description
+                + "\n Category: " + productCategory.getDisplayName();
     }
 }

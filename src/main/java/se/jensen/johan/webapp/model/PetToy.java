@@ -5,7 +5,7 @@ public class PetToy extends Product {
     private AgeCategory age;
 
     @Override
-    String category() {
+    public String category() {
         return "Category: " + getProductCategory();
     }
 

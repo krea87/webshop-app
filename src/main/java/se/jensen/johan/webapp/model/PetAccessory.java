@@ -3,8 +3,9 @@ package se.jensen.johan.webapp.model;
 public class PetAccessory extends Product {
     private String animal;
 
+
     @Override
-    String category() {
+    public String category() {
         return "Category: " + getProductCategory();
     }
 }

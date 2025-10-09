@@ -2,6 +2,29 @@
 'https://plantuml.com/sequence-diagram
 
 package "Model" {
+
+    package "Dao" {
+
+        interface ProductDao {
+            + getAllProducts() : List<Product>
+            + addProduct(product : Product) : void
+            + findProductByArticleNumber(articleNumber : String) : Product
+        }
+        class ProductListDao implements ProductDao {
+            - List<Product> products
+        }
+        class ProductFileDao implements ProductDao {
+            + saveToFile() : void
+            + loadFromFile() : void
+        }
+        }
+        class PetFood extends Product {
+            - String animal
+            - String age ' puppy-kitty/adult/senior
+            + getAnimal() String
+            + getAge() String
+        }
+
     abstract class Product {
         - int articleNumber
         - String title
@@ -10,19 +33,6 @@ package "Model" {
         - ProductCategory productCategory;
         {abstract} category() : String
         ' + getters/setters for all attributes
-    class ProductDao {
-        - List<Product> products
-        + getAllProducts() : List<Product>
-        + addProduct(product : Product) : void
-        + findProductByArticleNumber(articleNumber : String) : Product
-        + saveToFile() : void
-        + loadFromFile() : void
-    }
-    class PetFood extends Product {
-        - String animal
-        - String age ' puppy-kitty/adult/senior
-        + getAnimal() String
-        + getAge() String
     }
 
 ' I will add subclasses to PetFood such as DogFood and CatFood if needed
@@ -79,6 +89,6 @@ AgeCategory --> PetFood
 
 Application --> UI
 Application --> ProductDao
-Application --> Product
+
 
 @enduml
