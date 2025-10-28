@@ -31,7 +31,7 @@ public class Application {
                     }
                 }
                 case "2" -> addProductMenu();
-                case "3" -> System.out.println("findind product...");
+                case "3" -> findProductMenu();
                 case "4" -> isRunning = false;
             }
         }
@@ -62,7 +62,7 @@ public class Application {
         }
         if (product != null) {
             product.setProductCategory(category);
-            int articleNumber = Integer.parseInt(ui.prompt("Enter the Article Number: "));
+            String articleNumber = ui.prompt("Enter the Article Number: ");
             product.setArticleNumber(articleNumber);
             String title = ui.prompt("Enter the title: ");
             product.setTitle(title);
@@ -75,5 +75,15 @@ public class Application {
 
     }
 
+    private void findProductMenu() {
+        String articleNumber = ui.prompt("Enter the Article Number");
+        Product product = productDao.findProductByArticleNumber(articleNumber);
 
+        if (product == null) {
+            ui.info("No product found with that article number");
+        } else {
+            ui.info("Product found: ");
+            System.out.println(product);
+        }
+    }
 }

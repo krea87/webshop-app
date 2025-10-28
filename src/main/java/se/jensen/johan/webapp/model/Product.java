@@ -1,7 +1,7 @@
 package se.jensen.johan.webapp.model;
 
 public abstract class Product {
-    private int articleNumber;
+    private String articleNumber;
     private String title;
     private double price;
     private String description;
@@ -10,11 +10,11 @@ public abstract class Product {
 
     public abstract String category();
 
-    public int getArticleNumber() {
+    public String getArticleNumber() {
         return articleNumber;
     }
 
-    public void setArticleNumber(int articleNumber) {
+    public void setArticleNumber(String articleNumber) {
         this.articleNumber = articleNumber;
     }
 

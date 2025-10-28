@@ -20,6 +20,11 @@ public class ProductListDao implements ProductDao{
 
     @Override
     public Product findProductByArticleNumber(String articleNumber) {
+        for (Product product : products) {
+            if (product.getArticleNumber().equals(articleNumber)) {
+                return product;
+            }
+        }
         return null;
     }
 }
