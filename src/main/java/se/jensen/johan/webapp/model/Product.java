@@ -50,6 +50,11 @@ public abstract class Product {
         this.productCategory = productCategory;
     }
 
+    public String toFileString(){
+        return getProductCategory() + ";" + getArticleNumber() + ";" + getTitle() + ";" +
+                getPrice() + ";" + getDescription() + ";";
+    }
+
     @Override
     public String toString() {
         return "Title:" + title

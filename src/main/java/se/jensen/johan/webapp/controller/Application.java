@@ -2,6 +2,7 @@ package se.jensen.johan.webapp.controller;
 
 import se.jensen.johan.webapp.model.*;
 import se.jensen.johan.webapp.model.dao.ProductDao;
+import se.jensen.johan.webapp.model.dao.ProductFileDao;
 import se.jensen.johan.webapp.model.dao.ProductListDao;
 import se.jensen.johan.webapp.ui.ScannerUI;
 import se.jensen.johan.webapp.ui.UI;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class Application {
     UI ui = new ScannerUI();
     ProductDao productDao = new ProductListDao();
-
+   // ProductDao productDao = new ProductFileDao();
     public void runApplication() {
 
         boolean isRunning = true;
